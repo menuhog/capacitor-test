@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { Plugins } from '@capacitor/core';
+import { NavController, ModalController } from 'ionic-angular';
+import { Plugins, CameraResultType } from '@capacitor/core';
 
 @Component({
   selector: 'page-home',
@@ -8,7 +8,7 @@ import { Plugins } from '@capacitor/core';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
 
   }
 
@@ -18,7 +18,7 @@ export class HomePage {
 
         Camera.getPhoto({
             quality: 100,
-            resultType: 'base64'
+            resultType: CameraResultType.Base64
         }).then((result) => {
             console.log(result);
         }).catch((err) => {
@@ -27,5 +27,17 @@ export class HomePage {
         });
 
     }
+    
+launchHomeModal() {
+    /*      event.srcEvent.stopPropagation();*/
+    /*    event.preventDefault();*/
+    let homeModal = this.modalCtrl.create(HomePage);
+
+    homeModal.onDidDismiss(query => {
+    });
+    
+    homeModal.present();
+
+}
 
 }
