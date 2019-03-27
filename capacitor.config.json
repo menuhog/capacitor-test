@@ -1,0 +1,6 @@
+{
+  "appId": "com.menuhog.org",
+  "appName": "MenuHog",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}
